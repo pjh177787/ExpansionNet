@@ -1,0 +1,95 @@
+seed: 775533
+train batch_size: 8
+num_accum: 3
+ddp_sync_port: 11317
+save_path: ./github_ignore_material/saves/
+num_gpus: 1
+Warning: since no hdf5 path is provided using images instead of pre-calculated features.
+Features path: None
+Initializing dataset...  Train: 876 Val: 95 Test: 126
+Num train images: 876
+Num val images: 95
+Num test images: 126
+Num train images: 876
+Num val images: 95
+Num test images: 126
+tot tokens 350 less than 5: 130 remaining: 220
+There are 222 vocabs in dict
+Max sequence length: 60
+y vocabulary size: 222
+Using -  1  processes / GPUs!
+Requested num GPUs: 1
+GPU: 0] Process 0 working...
+Cross Entropy learning mode
+Warning: using Images instead of features in the DataLoader
+0] data.coco_dataloader) Dataset epoch initialization 0.02438211441040039 s elapsed
+0] data.coco_dataloader) How many batches 109
+Backbone loaded... Body loaded
+0] data.coco_dataloader) batch 108 / 109 batch_size: 8 epoch: 0 avg_src_seq_len: Constant avg_trg_seq_len: 17
+Traceback (most recent call last):
+  File "/home/dev/Git/ExpansionNet/train.py", line 504, in <module>
+    spawn_train_processes(model_args=model_args,
+  File "/home/dev/Git/ExpansionNet/train.py", line 365, in spawn_train_processes
+    mp.spawn(distributed_train,
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 241, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 197, in start_processes
+    while not context.join():
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 158, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/multiprocessing/spawn.py", line 68, in _wrap
+    fn(i, *args)
+  File "/home/dev/Git/ExpansionNet/train.py", line 335, in distributed_train
+    train(rank,
+  File "/home/dev/Git/ExpansionNet/train.py", line 167, in train
+    compute_evaluation_loss(loss_function, ddp_model, coco_dataset, data_loader,
+  File "/home/dev/Git/ExpansionNet/test.py", line 64, in compute_evaluation_loss
+    pred = model(enc_x=sub_batch_input_x,
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1523, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1359, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dev/Git/ExpansionNet/models/captioning_model.py", line 28, in forward
+    x = self.forward_enc(enc_x, enc_x_num_pads)
+  File "/home/dev/Git/ExpansionNet/models/End_ExpansionNet_v2.py", line 80, in forward_enc
+    x = self.swin_transf(enc_input)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dev/Git/ExpansionNet/models/swin_transformer_mod.py", line 644, in forward
+    x = self.forward_features(x)
+  File "/home/dev/Git/ExpansionNet/models/swin_transformer_mod.py", line 636, in forward_features
+    x = layer(x)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dev/Git/ExpansionNet/models/swin_transformer_mod.py", line 463, in forward
+    x = blk(x)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dev/Git/ExpansionNet/models/swin_transformer_mod.py", line 323, in forward
+    attn_windows = self.attn(x_windows, mask=self.attn_mask)  # nW*B, window_size*window_size, C
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1511, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/dev/miniconda3/envs/torch/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1520, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/dev/Git/ExpansionNet/models/swin_transformer_mod.py", line 199, in forward
+    attn = attn + relative_position_bias.unsqueeze(0)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 122.00 MiB. GPU 0 has a total capacity of 15.99 GiB of which 0 bytes is free. Including non-PyTorch memory, this process has 17179869184.00 GiB memory in use. Of the allocated memory 13.77 GiB is allocated by PyTorch, and 1.17 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+

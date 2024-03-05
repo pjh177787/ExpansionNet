@@ -74,7 +74,9 @@ class CocoDatasetKarpathy:
                 self.karpathy_test_dict[json_item['cocoid']] = new_item
             elif json_item['split'] == 'val':
                 self.karpathy_val_dict[json_item['cocoid']] = new_item
-
+        
+        # print how many items are in each split
+        print("Train: " + str(len(self.karpathy_train_dict)) + " Val: " + str(len(self.karpathy_val_dict)) + " Test: " + str(len(self.karpathy_test_dict)))
         #self.add_bboxes(train2014_bboxes_path)
         #self.add_bboxes(val2014_bboxes_path)
 
@@ -91,6 +93,10 @@ class CocoDatasetKarpathy:
         self.train_num_images = len(self.karpathy_train_list)
         self.val_num_images = len(self.karpathy_val_list)
         self.test_num_images = len(self.karpathy_test_list)
+
+        print("Num train images: " + str(self.train_num_images))
+        print("Num val images: " + str(self.val_num_images))
+        print("Num test images: " + str(self.test_num_images))
 
         if limited_num_train_images is not None:
             self.karpathy_train_list = self.karpathy_train_list[:limited_num_train_images]

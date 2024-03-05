@@ -4,39 +4,577 @@ num_accum: 1
 ddp_sync_port: 11317
 save_path: ./github_ignore_material/saves/
 num_gpus: 1
-Features path: ./github_ignore_material/raw_data/features.hdf5
+Features path: ./github_ignore_material/raw_data/features_yh.hdf5
 Features path provided, images are provided in form of features.
-Initializing dataset...  Num train images: 113287
-Num val images: 5000
-Num test images: 5000
-tot tokens 26390 less than 5: 16392 remaining: 9998
-There are 10000 vocabs in dict
-Max sequence length: 74
-y vocabulary size: 10000
+Initializing dataset...  Train: 876 Val: 95 Test: 126
+Num train images: 876
+Num val images: 95
+Num test images: 126
+Num train images: 876
+Num val images: 95
+Num test images: 126
+tot tokens 350 less than 5: 130 remaining: 220
+There are 222 vocabs in dict
+Max sequence length: 60
+y vocabulary size: 222
 Using -  1  processes / GPUs!
 Requested num GPUs: 1
 GPU: 0] Process 0 working...
-Traceback (most recent call last):
-  File "train.py", line 504, in <module>
-    spawn_train_processes(model_args=model_args,
-  File "train.py", line 365, in spawn_train_processes
-    mp.spawn(distributed_train,
-  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 230, in spawn
-    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
-  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 188, in start_processes
-    while not context.join():
-  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 150, in join
-    raise ProcessRaisedException(msg, error_index, failed_process.pid)
-torch.multiprocessing.spawn.ProcessRaisedException: 
-
--- Process 0 terminated with the following error:
-Traceback (most recent call last):
-  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 59, in _wrap
-    fn(i, *args)
-  File "/home/dev/Git/ExpansionNet/train.py", line 246, in distributed_train
-    ddp_model = DDP(model, device_ids=[rank])
-  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 496, in __init__
-    dist._verify_model_across_ranks(self.process_group, parameters)
-RuntimeError: NCCL error in: /pytorch/torch/lib/c10d/ProcessGroupNCCL.cpp:911, unhandled system error, NCCL version 2.7.8
-ncclSystemError: System call (socket, malloc, munmap, etc) failed.
-
+Cross Entropy learning mode
+0] data.coco_dataloader) Dataset epoch initialization 0.02282857894897461 s elapsed
+0] data.coco_dataloader) How many batches 54
+Loading: ./github_ignore_material/saves/checkpoint_2024-03-05-01:23:34_epoch7it54bs16_xe_.pth
+Training mode still in the same stage: xe
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 8 avg_src_seq_len: 144 avg_trg_seq_len: 23
+Validation Loss on 95 samples: 4.68265213975487
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 14 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0201), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0299), ('SPICE', 0.0047), ('METEOR', 0.0137)]
+Saved to checkpoint_2024-03-05-01:26:51_epoch8it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 9 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.67989989767567
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 15 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0198), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0292), ('SPICE', 0.0058), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:27:12_epoch9it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 10 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.677585288169963
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 14 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0203), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0301), ('SPICE', 0.0058), ('METEOR', 0.0135)]
+Saved to checkpoint_2024-03-05-01:27:33_epoch10it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 11 avg_src_seq_len: 144 avg_trg_seq_len: 25
+Validation Loss on 95 samples: 4.6753205104266256
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 15 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0211), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0312), ('SPICE', 0.0058), ('METEOR', 0.0141)]
+Saved to checkpoint_2024-03-05-01:27:54_epoch11it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 12 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.673369311009949
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 14 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0218), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.032), ('SPICE', 0.005), ('METEOR', 0.0142)]
+Saved to checkpoint_2024-03-05-01:28:15_epoch12it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 13 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.671268557955156
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 16 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0218), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0327), ('SPICE', 0.0044), ('METEOR', 0.0138)]
+Saved to checkpoint_2024-03-05-01:28:37_epoch13it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 14 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.669869184038151
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 14 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0218), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0325), ('SPICE', 0.005), ('METEOR', 0.014)]
+Saved to checkpoint_2024-03-05-01:28:58_epoch14it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 15 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.6685314871385035
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0214), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0319), ('SPICE', 0.005), ('METEOR', 0.0136)]
+Saved to checkpoint_2024-03-05-01:29:18_epoch15it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 16 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.667603064221588
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0214), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0319), ('SPICE', 0.005), ('METEOR', 0.0138)]
+Saved to checkpoint_2024-03-05-01:29:38_epoch16it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 17 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.666841350139669
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 12 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0214), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0319), ('SPICE', 0.0056), ('METEOR', 0.0138)]
+Saved to checkpoint_2024-03-05-01:29:57_epoch17it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 18 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.666277796087028
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0214), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0319), ('SPICE', 0.005), ('METEOR', 0.0135)]
+Saved to checkpoint_2024-03-05-01:30:17_epoch18it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 19 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.665680923607791
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0322), ('SPICE', 0.0056), ('METEOR', 0.0139)]
+Saved to checkpoint_2024-03-05-01:30:36_epoch19it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 20 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.6652319125873865
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0322), ('SPICE', 0.0044), ('METEOR', 0.0142)]
+Saved to checkpoint_2024-03-05-01:30:56_epoch20it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 21 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.664786402627569
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0322), ('SPICE', 0.0044), ('METEOR', 0.0142)]
+Saved to checkpoint_2024-03-05-01:31:13_epoch21it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 22 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.664540919929344
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.022), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0328), ('SPICE', 0.0044), ('METEOR', 0.0142)]
+Saved to checkpoint_2024-03-05-01:31:33_epoch22it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 23 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.664293861753854
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.022), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0328), ('SPICE', 0.0039), ('METEOR', 0.0142)]
+Saved to checkpoint_2024-03-05-01:31:53_epoch23it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 24 avg_src_seq_len: 144 avg_trg_seq_len: 23
+Validation Loss on 95 samples: 4.664135963921337
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 13 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0218), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0325), ('SPICE', 0.0032), ('METEOR', 0.0141)]
+Saved to checkpoint_2024-03-05-01:32:12_epoch24it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 25 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663975965452468
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 12 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:32:31_epoch25it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 26 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663853953490977
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:32:48_epoch26it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 27 avg_src_seq_len: 144 avg_trg_seq_len: 25
+Validation Loss on 95 samples: 4.663735092484017
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:33:05_epoch27it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 28 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663659411224307
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:33:22_epoch28it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 29 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663584780282774
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:33:39_epoch29it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 30 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663544401383993
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 12 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:33:57_epoch30it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 31 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663502388656937
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:34:14_epoch31it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 32 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.663469011879332
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:34:31_epoch32it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 33 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663436685419903
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:34:48_epoch33it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 34 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663414220281131
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:35:04_epoch34it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 35 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663394847745877
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:35:21_epoch35it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 36 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663386270147437
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:35:38_epoch36it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 37 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663377050687888
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:35:55_epoch37it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 38 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.6633689982485365
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:36:12_epoch38it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 39 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663360479001105
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:36:29_epoch39it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 40 avg_src_seq_len: 144 avg_trg_seq_len: 23
+Validation Loss on 95 samples: 4.663354177092047
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:36:46_epoch40it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 41 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663347408374911
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:37:02_epoch41it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 42 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663343965665332
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:37:19_epoch42it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 43 avg_src_seq_len: 144 avg_trg_seq_len: 25
+Validation Loss on 95 samples: 4.6633402312007055
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:37:36_epoch43it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 44 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663337722107284
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:37:52_epoch44it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 45 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663335446417902
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:38:09_epoch45it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 46 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663333579185588
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:38:26_epoch46it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 47 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663331595251255
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:38:43_epoch47it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 48 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.663330544933078
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:39:00_epoch48it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 49 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663329319561873
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:39:17_epoch49it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 50 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663328794402784
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:39:34_epoch50it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 51 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663328094190667
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 11 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:39:51_epoch51it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 52 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663327627382588
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:40:08_epoch52it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 53 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.6633271022235006
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:40:25_epoch53it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 54 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.663326810468451
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:40:42_epoch54it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 55 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663326285309363
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:40:58_epoch55it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 56 avg_src_seq_len: 144 avg_trg_seq_len: 23
+Validation Loss on 95 samples: 4.663326285309363
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:41:15_epoch56it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 57 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.6633261102563335
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:41:32_epoch57it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 58 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663326051905324
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:41:49_epoch58it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 59 avg_src_seq_len: 144 avg_trg_seq_len: 25
+Validation Loss on 95 samples: 4.663325760150275
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:42:06_epoch59it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 60 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325643448255
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:42:23_epoch60it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 61 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325585097246
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:42:40_epoch61it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 62 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325468395226
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:42:56_epoch62it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 63 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325468395226
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:43:13_epoch63it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 64 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.6633253516932065
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:43:30_epoch64it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 65 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325293342196
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:43:47_epoch65it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 66 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325293342196
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:44:04_epoch66it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 67 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:44:21_epoch67it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 68 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325234991187
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:44:38_epoch68it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 69 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325234991187
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:44:55_epoch69it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 70 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:45:12_epoch70it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 71 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:45:28_epoch71it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 72 avg_src_seq_len: 144 avg_trg_seq_len: 23
+Validation Loss on 95 samples: 4.663325234991187
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:45:45_epoch72it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 73 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325234991187
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:46:02_epoch73it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 74 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:46:19_epoch74it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 75 avg_src_seq_len: 144 avg_trg_seq_len: 25
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:46:36_epoch75it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 76 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325234991187
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:46:53_epoch76it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 77 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:47:10_epoch77it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 78 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:47:27_epoch78it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 79 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:47:44_epoch79it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 80 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:48:01_epoch80it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 81 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:48:18_epoch81it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 82 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:48:35_epoch82it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 83 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325118289167
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:48:52_epoch83it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 84 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:49:08_epoch84it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 85 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325118289167
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:49:25_epoch85it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 86 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:49:42_epoch86it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 87 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:49:59_epoch87it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 88 avg_src_seq_len: 144 avg_trg_seq_len: 23
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:50:16_epoch88it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 89 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 11 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:50:33_epoch89it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 90 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 11 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:50:50_epoch90it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 91 avg_src_seq_len: 144 avg_trg_seq_len: 25
+Validation Loss on 95 samples: 4.663325118289167
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:51:07_epoch91it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 92 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:51:24_epoch92it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 93 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:51:42_epoch93it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 94 avg_src_seq_len: 144 avg_trg_seq_len: 20
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:51:58_epoch94it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 95 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:52:15_epoch95it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 96 avg_src_seq_len: 144 avg_trg_seq_len: 22
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:52:32_epoch96it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 97 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:52:49_epoch97it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 98 avg_src_seq_len: 144 avg_trg_seq_len: 21
+Validation Loss on 95 samples: 4.663325059938157
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:53:06_epoch98it54bs16_xe_.pth
+0] data.coco_dataloader) batch 53 / 54 batch_size: 16 epoch: 99 avg_src_seq_len: 144 avg_trg_seq_len: 19
+Validation Loss on 95 samples: 4.663325176640177
+Evaluation on Validation Set
+Evaluation Phase over 95 BeamSize: 3  elapsed: 0 m 10 s
+[('CIDEr', 0.0), ('Bleu_1', 0.0216), ('Bleu_2', 0.0), ('Bleu_3', 0.0), ('Bleu_4', 0.0), ('ROUGE_L', 0.0323), ('SPICE', 0.0035), ('METEOR', 0.0134)]
+Saved to checkpoint_2024-03-05-01:53:23_epoch99it54bs16_xe_.pth
+[GPU: 0 ] Closing...

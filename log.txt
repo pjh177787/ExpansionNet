@@ -1,10 +1,14 @@
 Warning: since no hdf5 path is provided using images instead of pre-calculated features.
 Features path: None
-Initializing dataset...  Num train images: 113287
-Num val images: 5000
-Num test images: 5000
-tot tokens 26390 less than 5: 16392 remaining: 9998
-There are 10000 vocabs in dict
+Initializing dataset...  Train: 876 Val: 95 Test: 126
+Num train images: 876
+Num val images: 95
+Num test images: 126
+Num train images: 876
+Num val images: 95
+Num test images: 126
+tot tokens 350 less than 5: 130 remaining: 220
+There are 222 vocabs in dict
 Custom save point not found
 Found: patch_embed.proj.weight
 Found: patch_embed.proj.bias
@@ -371,31 +375,6 @@ Found: layers.0.downsample.reduction.weight
 Found: layers.1.downsample.reduction.weight
 Found: layers.2.downsample.reduction.weight
 Loading phase ended
-Train 5000 / 113287 completed
-Train 10000 / 113287 completed
-Train 15000 / 113287 completed
-Train 20000 / 113287 completed
-Train 25000 / 113287 completed
-Train 30000 / 113287 completed
-Train 35000 / 113287 completed
-Train 40000 / 113287 completed
-Train 45000 / 113287 completed
-Train 50000 / 113287 completed
-Train 55000 / 113287 completed
-Train 60000 / 113287 completed
-Train 65000 / 113287 completed
-Train 70000 / 113287 completed
-Train 75000 / 113287 completed
-Train 80000 / 113287 completed
-Train 85000 / 113287 completed
-Train 90000 / 113287 completed
-Train 95000 / 113287 completed
-Train 100000 / 113287 completed
-Train 105000 / 113287 completed
-Train 110000 / 113287 completed
-Train 113287 / 113287 completed
-Test 2500 / 5000 completed
-Test 5000 / 5000 completed
-Val 2500 / 5000 completed
-Val 5000 / 5000 completed
+Train 876 / 876 completed
+Test 126 / 126 completed
 [GPU: 0 ] Closing...

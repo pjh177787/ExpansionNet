@@ -336,7 +336,7 @@ class CocoDataLoader(TransparentDataLoader):
         list_of_bboxes_tensor = []
         list_of_num_bboxes = []
         for img_id in img_id_list:
-            bboxes_numpy_tensor = self.hdf5_file['%d_features' % img_id][()]
+            bboxes_numpy_tensor = self.hdf5_file['%d_features' % int(img_id)][()]
             bboxes_tensor = torch.tensor(bboxes_numpy_tensor)
             list_of_bboxes_tensor.append(bboxes_tensor)
             list_of_num_bboxes.append(len(bboxes_numpy_tensor))
@@ -403,13 +403,13 @@ class CocoDataLoader(TransparentDataLoader):
     def get_bboxes_by_idx(self, img_idx, dataset_split):
         if dataset_split == CocoDatasetKarpathy.TestSet_ID:
             img_id = self.coco_dataset.karpathy_test_list[img_idx]['img_id']
-            bboxes_tensor = torch.tensor(self.hdf5_file['%d_features' % img_id][()])
+            bboxes_tensor = torch.tensor(self.hdf5_file['%d_features' % int(img_id)][()])
         elif dataset_split == CocoDatasetKarpathy.ValidationSet_ID:
             img_id = self.coco_dataset.karpathy_val_list[img_idx]['img_id']
-            bboxes_tensor = torch.tensor(self.hdf5_file['%d_features' % img_id][()])
+            bboxes_tensor = torch.tensor(self.hdf5_file['%d_features' % int(img_id)][()])
         else:
             img_id = self.coco_dataset.karpathy_train_list[img_idx]['img_id']
-            bboxes_tensor = torch.tensor(self.hdf5_file['%d_features' % img_id][()])
+            bboxes_tensor = torch.tensor(self.hdf5_file['%d_features' % int(img_id)][()])
         return bboxes_tensor
 
     def get_all_image_captions_by_idx(self, img_idx, dataset_split):
@@ -429,7 +429,7 @@ class CocoDataLoader(TransparentDataLoader):
             detected_classes = []
             for i in range(len(img_id_list)):
                 img_id = img_id_list[i]
-                detected_class = self.hdf5_file['%d_cls_prob' % img_id][()]
+                detected_class = self.hdf5_file['%d_cls_prob' % int(img_id)][()]
                 detected_classes.append(list(np.argmax(detected_class, axis=1)))
 
             return detected_classes

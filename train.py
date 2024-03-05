@@ -492,13 +492,13 @@ if __name__ == "__main__":
 
     coco_dataset = CocoDatasetKarpathy(
         images_path=path_args.images_path,
-        coco_annotations_path=path_args.captions_path + "dataset_coco.json",
+        coco_annotations_path=path_args.captions_path + "yh_anno.json",
         train2014_bboxes_path=path_args.captions_path + "train2014_instances.json",
         val2014_bboxes_path=path_args.captions_path + "val2014_instances.json",
         preproc_images_hdf5_filepath=path_args.preproc_images_hdf5_filepath if train_args.is_end_to_end else None,
         precalc_features_hdf5_filepath=None if train_args.is_end_to_end else path_args.features_path,
         limited_num_train_images=None,
-        limited_num_val_images=5000)
+        limited_num_val_images=None)
 
     # train base model
     spawn_train_processes(model_args=model_args,

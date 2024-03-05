@@ -26,13 +26,13 @@ def convert_time_as_hhmmss(ticks):
 def generate_data(path_args):
 
     coco_dataset = CocoDatasetKarpathy(images_path=path_args.images_path,
-                                       coco_annotations_path=args.captions_path + "dataset_coco.json",
+                                       coco_annotations_path=args.captions_path + "yh_anno.json",
                                        train2014_bboxes_path=args.captions_path + "train2014_instances.json",
                                        val2014_bboxes_path=args.captions_path + "val2014_instances.json",
                                        preproc_images_hdf5_filepath=None,
                                        precalc_features_hdf5_filepath=None,
                                        limited_num_train_images=None,
-                                       limited_num_val_images=5000)
+                                       limited_num_val_images=None)
 
     from models.swin_transformer_mod import SwinTransformer
     model = SwinTransformer(
