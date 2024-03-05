@@ -1,0 +1,42 @@
+seed: 775533
+train batch_size: 16
+num_accum: 1
+ddp_sync_port: 11317
+save_path: ./github_ignore_material/saves/
+num_gpus: 1
+Features path: ./github_ignore_material/raw_data/features.hdf5
+Features path provided, images are provided in form of features.
+Initializing dataset...  Num train images: 113287
+Num val images: 5000
+Num test images: 5000
+tot tokens 26390 less than 5: 16392 remaining: 9998
+There are 10000 vocabs in dict
+Max sequence length: 74
+y vocabulary size: 10000
+Using -  1  processes / GPUs!
+Requested num GPUs: 1
+GPU: 0] Process 0 working...
+Traceback (most recent call last):
+  File "train.py", line 504, in <module>
+    spawn_train_processes(model_args=model_args,
+  File "train.py", line 365, in spawn_train_processes
+    mp.spawn(distributed_train,
+  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 230, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 188, in start_processes
+    while not context.join():
+  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 150, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/multiprocessing/spawn.py", line 59, in _wrap
+    fn(i, *args)
+  File "/home/dev/Git/ExpansionNet/train.py", line 246, in distributed_train
+    ddp_model = DDP(model, device_ids=[rank])
+  File "/home/dev/miniconda3/envs/exp/lib/python3.8/site-packages/torch/nn/parallel/distributed.py", line 496, in __init__
+    dist._verify_model_across_ranks(self.process_group, parameters)
+RuntimeError: NCCL error in: /pytorch/torch/lib/c10d/ProcessGroupNCCL.cpp:911, unhandled system error, NCCL version 2.7.8
+ncclSystemError: System call (socket, malloc, munmap, etc) failed.
+
